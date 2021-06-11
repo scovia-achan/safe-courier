@@ -1,0 +1,27 @@
+.nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px 0;
+    background-color: rgba(87, 84, 81, 0.55);
+    
+}
+
+.navlinks {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+}
+.navlinks li {
+    padding-left:12px;
+    padding-right: 12px;
+}
+.navlinks a{
+    text-decoration: none;
+    color: green;
+    padding: 5px;
+}
+.navlinks a:hover{
+    /* background-color: rgb(150, 157, 158); */
+    color: rgb(128, 108, 23);
+}
