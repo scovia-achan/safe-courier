@@ -6,19 +6,19 @@ function Login() {
   const [password, setpassword] = useState("");
 
   return (
-    <div className="sigin-up">
+    <div className="sigin-in">
       <h2 style={{ textAlign: "center", color: "rgb(6, 133, 150)" }}>
-        Create a free account
+        Log in
       </h2>
-      <div className="register">
-        <form className="register-form">
+      <div className="login">
+        <form className="login-form">
           
           <label>Email</label>
           <input type="email" placeholder="name@example.com" />
           <label>Password</label>
           <input type="email" placeholder="password" />
           
-          <button>Create Account</button>
+          <button className="auth-btn">Login</button>
         </form>
       </div>
     </div>

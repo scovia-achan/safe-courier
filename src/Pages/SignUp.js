@@ -24,7 +24,7 @@ function SignUp() {
           <input type="email" placeholder="password" />
 					<label>confirm Password</label>
           <input type="email" placeholder="reapeat password" />
-					<button>Create Account</button>
+					<button className="auth-btn">Create Account</button>
         </form>
       </div>
     </div>

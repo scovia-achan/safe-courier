@@ -8,9 +8,13 @@
     
 }
 .logo{
-    font-size: 23px;
+    font-size: 16px;
     font-weight: bold;
     color: #222831;
+}
+.logo span {
+    font-size: 25px;
+    color: rgb(6, 104, 99);
 }
 
 .navlinks {
