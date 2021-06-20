@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+// import React, { useState } from "react";
 import {Link} from "react-router-dom"
 import "../App.css";
 
 function Login() {
-  const [email, setemail] = useState("");
-  const [password, setpassword] = useState("");
+  // const [email, setemail] = useState("");
+  // const [password, setpassword] = useState("");
 
   return (
     <div className="sigin-in">

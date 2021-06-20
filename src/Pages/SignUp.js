@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { RadioGroup, Radio, FormControlLabel } from "@material-ui/core";
+// import { RadioGroup, Radio, FormControlLabel } from "@material-ui/core";
 import "../App.css";
 import axios from "axios";
 
@@ -27,6 +27,7 @@ function SignUp() {
       .post("https://sefcourier.herokuapp.com/api/v1/user/signup", data)
       .then((res) => {
        console.log(res.data)
+       setData(res.data)
        setfirstName();
        setlastName();
        setemail()
