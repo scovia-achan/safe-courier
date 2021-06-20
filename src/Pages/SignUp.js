@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import {Link} from "react-router-dom"
 import "../App.css";
 
 function SignUp() {
@@ -11,9 +12,11 @@ function SignUp() {
 
   return (
     <div className="sigin-up">
-      <h2 style={{ textAlign: "center", color:"rgb(6, 133, 150)" }}>Create a free account</h2>
+      
       <div className="register">
+        
         <form className="register-form">
+          <h2 style={{ textAlign: "center", color:"rgb(6, 133, 150)" }}>Create a free account</h2>
 					<label>First name</label>
           <input type="text" placeholder="First Name" />
 					<label>Last name</label>
@@ -25,6 +28,7 @@ function SignUp() {
 					<label>confirm Password</label>
           <input type="email" placeholder="reapeat password" />
 					<button className="auth-btn">Create Account</button>
+          <p style={{marginTop: "2px"}}>Already have an account? <Link to="/login">Login</Link></p>
         </form>
       </div>
     </div>

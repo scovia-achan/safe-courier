@@ -3,7 +3,10 @@ import "./Main.css";
 export default function Footer() {
   return (
     <div className="footer">
-      <p>Copyright 2021</p>
+      <div className="ft-container">
+        <p>Copyright 2021</p>
+      </div>
+      
     </div>
   );
 }
