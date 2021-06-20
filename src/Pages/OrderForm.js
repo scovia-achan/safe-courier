@@ -12,14 +12,13 @@ export default function OrderForm() {
           
           <label>Type of item</label>
           <input type="text" placeholder="item name" />
-          <label>Weight</label>
+          <label>Weight(in kgs)</label>
           <input type="text" placeholder="weight" />
           <label>Destination</label>
           <input type="text" placeholder="where to be delivered" />
           <label>Pickup Location</label>
           <input type="text" placeholder="Where is the parcel" />
-          <label>confirm Password</label>
-          <input type="text" placeholder="reapeat password" />
+          
           <button className="auth-btn">Submit order</button>
          
         </form>
