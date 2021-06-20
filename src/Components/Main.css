@@ -54,6 +54,17 @@
     font-size: 16px;
 }
 
+.parcel{
+    display: flex;
+    justify-content: space-around;
+}
+.all-parcels {
+    height: 100vh;
+}
+.all-parcels button {
+    margin: 50px 280px;
+}
+
 @media screen and(max-width:450px) {
     .footer{
         width: 100%;

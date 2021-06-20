@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-// import { RadioGroup, Radio, FormControlLabel } from "@material-ui/core";
+import { Select,MenuItem} from "@material-ui/core";
 import "../App.css";
 import axios from "axios";
 
@@ -68,13 +68,20 @@ function SignUp() {
             onChange={(e) => setemail(e.target.value)}
           />
           <label>Role</label>
-          <div>
-            <input type="radio" id="admin" name="role" value={role} />
-            <label for="male">Admin</label><br />
-            <input type="radio" id="buyer" name="gender" value={role} />
-            <label for="buyer">buyer</label><br />
-            
-          </div>
+          
+          <Select
+          
+          id="demo-simple-select-outlined"
+          placeholder="Your role"
+          value={role}
+          onChange={e=>setRole(e.target.value)}>
+          <MenuItem value="" disabled>
+            Your role
+          </MenuItem>
+            <MenuItem value={role}>Admin</MenuItem>
+            <MenuItem value={role}>buyer</MenuItem>
+          </Select>
+          
           <label>Password</label>
           <input
             type="text"
@@ -89,7 +96,7 @@ function SignUp() {
             value={password2}
             onChange={(e) => setpassword2(e.target.value)}
           />
-          <Link to="/parcelform"><button className="auth-btn" type="submit">Create Account</button></Link>
+          <button className="auth-btn" type="submit">Create Account</button>
           <p style={{ marginTop: "2px" }}>
             Already have an account? <Link to="/login">Login</Link>
           </p>

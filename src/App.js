@@ -6,6 +6,7 @@ import SignUp from "./Pages/SignUp";
 import Footer from "./Components/Footer";
 import Login from "./Pages/Login"
 import OrderForm from "./Pages/OrderForm";
+import Allparcels from "./Pages/AllParcels"
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
             <Route exact path="/signup" component={SignUp}/>
             <Route exact path="/login" component={Login}/>
             <Route exact path="/parcelform" component={OrderForm}/>
+            <Route exact path="/allparcels" component={Allparcels} />
           </Switch>
         <Footer />
       </Router>
