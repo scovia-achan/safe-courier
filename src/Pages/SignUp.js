@@ -16,13 +16,14 @@ function SignUp() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const user = {firstName, lastName, email, role, password, password2};
-   
+    try{
       fetch("https://sefcourier.herokuapp.com/api/v1/user/signup", {
         method: "POST",
         headers: {"Content-Type": "application/json"},
-        body: JSON.stringify(user)
+        body: JSON.stringify(user),
+        credentials: "include"
       })
-      .then((data) => {
+      .then(() => {
        console.log("user added")
        setfirstName("");
        setlastName("");
@@ -33,7 +34,9 @@ function SignUp() {
        history.go(-1)
        
       })
-      .catch((err) => console.log(err));
+      
+    }
+      catch(err) { console.log(err)};
   };
 
   
