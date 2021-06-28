@@ -1,43 +1,43 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { Select,MenuItem} from "@material-ui/core";
+import { Link, useHistory } from "react-router-dom";
 import "../App.css";
-import axios from "axios";
+
+
 
 function SignUp() {
   const [firstName, setfirstName] = useState("");
   const [lastName, setlastName] = useState("");
   const [email, setemail] = useState("");
-  const [role, setRole] = useState("")
+  const [role, setRole] = useState("user")
   const [password, setpassword] = useState("");
   const [password2, setpassword2] = useState("");
-  const [data, setData] = useState(""); 
+  const history = useHistory();  
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const data = {
-      firstName: firstName,
-      lastName: lastName,
-      email: email,
-      role: role,
-      password: password,
-      password2: password2,
-    };
-    axios
-      .post("https://sefcourier.herokuapp.com/api/v1/user/signup", data)
-      .then((res) => {
-       console.log(res.data)
-       setData(res.data)
-       setfirstName();
-       setlastName();
-       setemail()
-       setRole()
-       setpassword()
-       setpassword2();
+    const user = {firstName, lastName, email, role, password, password2};
+   
+      fetch("https://sefcourier.herokuapp.com/api/v1/user/signup", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(user)
+      })
+      .then((data) => {
+       console.log("user added")
+       setfirstName("");
+       setlastName("");
+       setemail("")
+       setRole("")
+       setpassword("")
+       setpassword2("");
+       history.go(-1)
        
       })
       .catch((err) => console.log(err));
   };
+
+  
+  
 
   return (
     <div className="sigin-up">
@@ -68,19 +68,11 @@ function SignUp() {
             onChange={(e) => setemail(e.target.value)}
           />
           <label>Role</label>
+          <select className= "role-select" value={role} onChange={e=>setRole(e.target.value)}>
+            <option value="admin">Admin</option>
+            <option value="user">User</option>
+          </select>
           
-          <Select
-          
-          id="demo-simple-select-outlined"
-          placeholder="Your role"
-          value={role}
-          onChange={e=>setRole(e.target.value)}>
-          <MenuItem value="" disabled>
-            Your role
-          </MenuItem>
-            <MenuItem value={role}>Admin</MenuItem>
-            <MenuItem value={role}>buyer</MenuItem>
-          </Select>
           
           <label>Password</label>
           <input
@@ -96,11 +88,11 @@ function SignUp() {
             value={password2}
             onChange={(e) => setpassword2(e.target.value)}
           />
-          <button className="auth-btn" type="submit">Create Account</button>
+          <button className="auth-btn" type="submit" >Create Account</button>
           <p style={{ marginTop: "2px" }}>
             Already have an account? <Link to="/login">Login</Link>
           </p>
-          {console.log(data)}
+        
         </form>
       </div>
     </div>

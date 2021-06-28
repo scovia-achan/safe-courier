@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
-import { Button } from '@material-ui/core'
-import axios from 'axios';
+import React, {useState, useEffect} from 'react';
+
+import "../App.css"
 
 import ParcelCard from '../Components/ParcelCard';
 import "../Components/Main.css"
@@ -8,27 +8,28 @@ import "../Components/Main.css"
 export default function AllParcels() {
     const [data, setData] = useState([])
     
-   
-    const fetchData=()=>{
-        axios.get("https://sefcourier.herokuapp.com/api/v1/parcels")
-        .then(result=> {
-            setData(result.data)
-            console.log(result)
+    useEffect(() => {
+      fetch("https://sefcourier.herokuapp.com/api/v1/parcels")
+        .then(res=>{
+          return res.json();
         })
-        .catch(err=>console.log(err))
-    }
-        
-        
+        .then(result => {
+          setData(result)
+          
+        })
+      
+    }, []) 
 
     return (
         <div className="all-parcels">
           
-          <Button onClick={fetchData}>Get all parcels</Button>
+          {/* <Button onClick={fetchData}>Get all parcels</Button> */}
                         
           <div className="book">
             {data.map(parcel=>{
-              return(<ParcelCard key={parcel._id} name={parcel.name} destination={parcel.destination} currentLocation={parcel.currentLocation} image="https://images-na.ssl-images-amazon.com/images/I/51QyOJtK0xS._SY291_BO1,204,203,200_QL40_FMwebp_.jpg"/>)
+              return(<ParcelCard key={parcel._id} name={parcel.parcelname} destination={parcel.destination} currentLocation={parcel.userLocation} status={parcel.status} />)
             })}
+            {console.log(data)}
           </div>
          
             
