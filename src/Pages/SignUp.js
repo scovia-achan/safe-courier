@@ -17,7 +17,7 @@ function SignUp() {
     e.preventDefault();
     const user = {firstName, lastName, email, role, password, password2};
    
-      fetch("http://localhost:8090/api/v1/user/signup", {
+      fetch("https://sefcourier.herokuapp.com/api/v1/user/signup", {
         method: "POST",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(user)

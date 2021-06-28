@@ -9,7 +9,7 @@ export default function AllParcels() {
     const [data, setData] = useState([])
     
     useEffect(() => {
-      fetch("http://localhost:8090/api/v1/parcels")
+      fetch("https://sefcourier.herokuapp.com/api/v1/parcels")
         .then(res=>{
           return res.json();
         })
