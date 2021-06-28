@@ -49,7 +49,7 @@ export default function OrderForm() {
           <label>userLocation Location</label>
           <input type="text" placeholder="Where is the parcel" value={userLocation} onChange={(e)=>setuserLocation(e.target.value)}/>
           
-          <button className="auth-btn" type="submit">Submit order</button>
+          <button className="auth-btn" type="submit" onClick={()=>history.push("/submitted")}>Submit order</button>
          
         </form>
       </div>
