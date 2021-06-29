@@ -1,30 +1,39 @@
 import React, { useState } from "react";
-import {Link} from "react-router-dom"
+import {Link, useHistory} from "react-router-dom"
 import "../App.css";
+import axios from "axios"
 
 function Login() {
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
+  const history = useHistory()
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const user = {email, password};
    
-      fetch("https://sefcourier.herokuapp.com/api/v1/user/login", {
-        method: "POST",
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify(user)
-      })
-      .then((data) => {
-       console.log("user logged in")
-       
-       setemail("")
-       setpassword("")
-       
-       
-      })
-      .catch((err) => console.log(err));
-  };
+    axios
+    .post("https://sefcourier.herokuapp.com/api/v1/user/login", user)
+ 
+    .then((res) => {
+     localStorage.removeItem("verified-token");
+     
+     localStorage.setItem("verified-token", res.data.accessToken)
+    
+     history.push("/parcelform")
+     
+    })
+    .catch((err)=> { 
+      console.log(err)
+    })
+    
+    
+    setemail("")
+   
+    setpassword("")
+  
+}
+  
 
   return (
     <div className="sigin-in">

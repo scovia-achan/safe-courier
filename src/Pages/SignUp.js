@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import "../App.css";
+import axios from "axios"
 
 
 
@@ -16,30 +17,31 @@ function SignUp() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const user = {firstName, lastName, email, role, password};
-    try{
-      fetch("https://sefcourier.herokuapp.com/api/v1/user/signup", {
-        method: "POST",
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify(user),
-        credentials: "include"
-      })
-      .then(() => {
-       console.log("user added")
-       setfirstName("");
-       setlastName("");
-       setemail("")
-       setRole("")
-       setpassword("")
+    
+    axios
+      .post("https://sefcourier.herokuapp.com/api/v1/user/signup", user)
+   
+      .then((res) => {
+       localStorage.removeItem("verified-token");
+       localStorage.removeItem("firstname");
+       localStorage.setItem("verified-token", res.data.accessToken)
+      
        history.push("/login")
        
       })
+      .catch((err)=> { 
+        console.log(err)
+      })
       
-    }
-      catch(err) { console.log(err)};
-  };
+      setfirstName("")
+      setlastName("")
+      setemail("")
+      setRole("")
+      setpassword("")
+    
+  }
 
-  
-  
+ 
 
   return (
     <div className="sigin-up">
